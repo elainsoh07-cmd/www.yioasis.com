@@ -7,19 +7,20 @@
 <meta name="description" content="Yi Oasis — a business-class wellness experience. Discover our treatments, promotions, and reserve your appointment via WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='38' fill='none' stroke='%2358564f' stroke-width='10' stroke-linecap='round' stroke-dasharray='228 12' transform='rotate(-18 50 50)'/%3E%3Cpath d='M28 56 Q50 45 72 50' fill='none' stroke='%23a8453a' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
   :root{
-    --emerald-deep:#123529;
-    --emerald:#1f4b3a;
-    --emerald-light:#2e6b53;
-    --gold:#cfa646;
-    --gold-light:#e6c877;
-    --cream:#faf6ee;
-    --cream-2:#f2ead9;
-    --ink:#20281f;
-    --muted:#6b7267;
+    --emerald-deep:#332f2b;
+    --emerald:#55524a;
+    --emerald-light:#847e6f;
+    --gold:#a8453a;
+    --gold-light:#c97b6a;
+    --cream:#faf7f2;
+    --cream-2:#f1ece1;
+    --ink:#2b2a26;
+    --muted:#7d7a70;
     --white:#ffffff;
-    --shadow: 0 20px 50px rgba(18,53,41,0.12);
+    --shadow: 0 20px 50px rgba(43,38,33,0.12);
     --radius: 18px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -47,8 +48,8 @@
     display:inline-flex; align-items:center; gap:10px; padding:15px 30px; border-radius:50px;
     font-weight:600; font-size:.95rem; cursor:pointer; border:none; transition:.25s ease;
   }
-  .btn-gold{ background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:var(--emerald-deep); box-shadow:0 12px 28px rgba(207,166,70,.35); }
-  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(207,166,70,.45); }
+  .btn-gold{ background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:#fff; box-shadow:0 12px 28px rgba(168,69,58,.35); }
+  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(168,69,58,.45); }
   .btn-outline{ background:transparent; border:1.5px solid rgba(255,255,255,.65); color:#fff; }
   .btn-outline:hover{ background:rgba(255,255,255,.12); }
   .btn-whatsapp{ background:#25D366; color:#fff; box-shadow:0 12px 28px rgba(37,211,102,.4); }
@@ -57,13 +58,14 @@
   /* NAV */
   header{
     position:fixed; top:0; left:0; right:0; z-index:1000;
-    background:rgba(18,53,41,0.92); backdrop-filter:blur(10px);
+    background:rgba(43,38,33,0.92); backdrop-filter:blur(10px);
     transition:.3s;
   }
   header.scrolled{ background:rgba(15,38,30,0.98); box-shadow:0 12px 32px rgba(0,0,0,.22); }
   nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1180px; margin:0 auto; }
-  .brand{ color:#fff; font-size:1.4rem; font-weight:700; letter-spacing:.03em; display:flex; align-items:center; gap:8px;}
+  .brand{ color:#fff; font-size:1.4rem; font-weight:700; letter-spacing:.03em; display:flex; align-items:center; gap:10px;}
   .brand span{ color:var(--gold-light); }
+  .logo-mark{ flex-shrink:0; display:block; }
   .nav-links{ display:flex; gap:34px; align-items:center; }
   .nav-links a{ color:#f2ead9; font-size:.92rem; font-weight:500; letter-spacing:.02em; position:relative; padding:4px 0;}
   .nav-links a:after{ content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--gold-light); transition:.25s; }
@@ -77,8 +79,8 @@
   .hero{
     position:relative; min-height:100vh; display:flex; align-items:center;
     background:
-      linear-gradient(160deg, rgba(18,53,41,.88), rgba(31,75,58,.78) 55%, rgba(207,166,70,.35)),
-      radial-gradient(circle at 80% 20%, rgba(207,166,70,.25), transparent 45%);
+      linear-gradient(160deg, rgba(43,38,33,.90), rgba(85,82,74,.80) 55%, rgba(168,69,58,.35)),
+      radial-gradient(circle at 80% 20%, rgba(168,69,58,.25), transparent 45%);
     background-color:var(--emerald-deep);
     color:#fff; text-align:center; padding-top:120px;
     overflow:hidden;
@@ -88,6 +90,7 @@
     background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
     background-size:22px 22px; opacity:.4;
   }
+  .hero canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; }
   .hero-inner{ position:relative; z-index:2; max-width:800px; margin:0 auto; padding:0 24px; }
   .hero .eyebrow{ color:var(--gold-light); }
   .hero h1{ font-size:clamp(2.4rem, 6vw, 4.2rem); line-height:1.12; font-weight:800; margin-bottom:22px; }
@@ -106,7 +109,7 @@
     background:linear-gradient(145deg,var(--emerald-deep),var(--emerald)); border-radius:var(--radius);
     padding:44px; color:#fff; box-shadow:var(--shadow); position:relative; overflow:hidden;
   }
-  .story-card:before{ content:"“"; position:absolute; top:-10px; left:20px; font-family:'Playfair Display',serif; font-size:9rem; color:rgba(207,166,70,.25);}
+  .story-card:before{ content:"“"; position:absolute; top:-10px; left:20px; font-family:'Playfair Display',serif; font-size:9rem; color:rgba(168,69,58,.25);}
   .story-card p{ position:relative; z-index:1; font-size:1.05rem; line-height:1.85; margin-bottom:16px; }
   .story-card .sign{ font-family:'Playfair Display', serif; font-style:italic; color:var(--gold-light); margin-top:20px; }
   .story-text p{ color:var(--muted); line-height:1.85; margin-bottom:18px; font-size:1.02rem;}
@@ -124,12 +127,14 @@
     transition:.3s; border-top:3px solid var(--gold);
   }
   .value-card:hover{ transform:translateY(-8px); }
-  .value-card .icon{ font-size:2rem; margin-bottom:16px; }
+  .value-card .icon{ margin-bottom:16px; }
   .value-card h3{ font-size:1.15rem; margin-bottom:10px; color:var(--emerald-deep); }
   .value-card p{ color:var(--muted); font-size:.95rem; line-height:1.7; }
 
   /* EXPERIENCE — Living a Dream, Creating a Legacy */
-  .experience{ background:var(--emerald-deep); color:#fff; }
+  .experience{ background:var(--emerald-deep); color:#fff; position:relative; overflow:hidden; }
+  .experience canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+  .experience .container{ position:relative; z-index:1; }
   .experience .section-title, .experience .eyebrow{ color:#fff; }
   .experience .eyebrow{ color:var(--gold-light); }
   .experience .section-sub{ color:#dfe8e2; }
@@ -189,7 +194,7 @@
     background:var(--white); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
     transition:.3s; position:relative; display:flex; flex-direction:column;
   }
-  .poster:hover{ transform:translateY(-6px); box-shadow:0 26px 55px rgba(18,53,41,.18); }
+  .poster:hover{ transform:translateY(-6px); box-shadow:0 26px 55px rgba(43,38,33,.18); }
   .poster-top{ padding:26px 24px 18px; text-align:center; color:#fff; position:relative; }
   .poster-top .ribbon{
     display:inline-block; font-family:'Playfair Display',serif; font-weight:800; font-size:1.4rem;
@@ -232,16 +237,20 @@
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
   .marquee-track{
-    display:flex; align-items:center; gap:20px; width:max-content;
-    animation: marquee-scroll 32s linear infinite;
+    display:flex; align-items:stretch; gap:20px; width:max-content;
+    animation: marquee-scroll 60s linear infinite;
   }
   .marquee-wrap:hover .marquee-track{ animation-play-state:paused; }
   .marquee-item{
-    display:inline-flex; align-items:center; gap:10px; white-space:nowrap;
-    background:var(--white); border:1px solid #e6ddc9; border-radius:50px; padding:12px 26px;
-    font-family:'Playfair Display',serif; font-size:1rem; color:var(--emerald-deep); box-shadow:0 6px 16px rgba(18,53,41,.06);
+    display:flex; flex-direction:column; align-items:flex-start; gap:8px; white-space:normal;
+    background:var(--white); border:1px solid #e6ddc9; border-radius:16px; padding:20px 24px;
+    width:300px; flex-shrink:0; text-align:left;
+    font-family:'Poppins',sans-serif; color:var(--emerald-deep); box-shadow:0 6px 16px rgba(43,38,33,.06);
   }
-  .marquee-item .mstars{ color:var(--gold); letter-spacing:2px; font-size:.95rem; }
+  .marquee-item .mstars{ color:var(--gold); letter-spacing:2px; font-size:.9rem; }
+  .marquee-item .mquote{ font-size:.86rem; line-height:1.6; color:var(--ink); }
+  .marquee-item .mname{ font-family:'Playfair Display',serif; font-size:.92rem; font-weight:700; color:var(--emerald-deep); margin-top:2px; }
+  .marquee-item .mmeta{ font-size:.72rem; color:var(--muted); letter-spacing:.02em; }
   @keyframes marquee-scroll{
     from{ transform:translateX(0); }
     to{ transform:translateX(-50%); }
@@ -252,7 +261,7 @@
   }
   .stars{ display:flex; gap:8px; }
   .stars button{
-    background:none; border:none; cursor:pointer; font-size:2.4rem; color:#ddd2ac; transition:.15s; line-height:1;
+    background:none; border:none; cursor:pointer; font-size:2.4rem; color:#d9d3c5; transition:.15s; line-height:1;
     filter:drop-shadow(0 2px 3px rgba(0,0,0,.05));
   }
   .stars button.lit, .stars button:hover, .stars button:hover ~ button{ color:var(--gold); transform:scale(1.08); }
@@ -264,7 +273,7 @@
 
   /* WHATSAPP CTA SECTION */
   .wa-cta{
-    background:linear-gradient(135deg,#1f4b3a,#123529); color:#fff; text-align:center; border-radius:28px;
+    background:linear-gradient(135deg,#55524a,#332f2b); color:#fff; text-align:center; border-radius:28px;
     padding:60px 30px; margin:0 24px; box-shadow:var(--shadow); position:relative; overflow:hidden;
   }
   .wa-cta:before{ content:"💬"; position:absolute; font-size:14rem; opacity:.05; right:-20px; top:-30px; }
@@ -329,7 +338,7 @@
     .interior-note{ flex-direction:column; text-align:center; align-items:center; }
     .stars-widget{ padding:32px 24px; width:100%; }
     .stars button{ font-size:2rem; }
-    .marquee-item{ padding:10px 18px; font-size:.88rem; }
+    .marquee-item{ padding:16px 18px; width:250px; }
     .marquee-wrap{ margin-bottom:36px; }
     .wa-cta{ margin:0 12px; padding:44px 20px; }
     .wa-float{ width:56px; height:56px; font-size:1.5rem; bottom:18px; right:18px; }
@@ -342,7 +351,13 @@
 
 <header id="siteHeader">
   <nav>
-    <a href="#top" class="brand">Yi <span>Oasis</span></a>
+    <a href="#top" class="brand">
+      <svg class="logo-mark" viewBox="0 0 100 100" width="34" height="34" aria-hidden="true">
+        <circle cx="50" cy="50" r="38" fill="none" stroke="#a3a099" stroke-width="9" stroke-linecap="round" stroke-dasharray="228 12" transform="rotate(-18 50 50)"/>
+        <path d="M28 56 Q50 45 72 50" fill="none" stroke="var(--gold-light)" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      Yi <span>Oasis</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#about">Our Story</a></li>
       <li><a href="#services">Services</a></li>
@@ -358,6 +373,7 @@
 </header>
 
 <section class="hero" id="top">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <span class="eyebrow">Yi Oasis · Your Indulgence</span>
     <h1>A <em>Business‑Class</em> Escape<br>Into Pure Bliss</h1>
@@ -402,17 +418,34 @@
   <div class="container">
     <div class="value-grid">
       <div class="value-card reveal">
-        <div class="icon">🌿</div>
+        <div class="icon">
+          <svg viewBox="0 0 100 100" width="56" height="56" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="38" stroke="#e6ddc9" stroke-width="2"/>
+            <path d="M50 72c-14-2-22-14-20-30 14 0 24 8 26 22" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M50 72V46" stroke="var(--gold)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3>A Lasting Legacy</h3>
         <p>Built to endure — for our founders' families, and for the generations of guests we welcome.</p>
       </div>
       <div class="value-card reveal">
-        <div class="icon">🤝</div>
+        <div class="icon">
+          <svg viewBox="0 0 100 100" width="56" height="56" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="38" stroke="#e6ddc9" stroke-width="2"/>
+            <circle cx="42" cy="50" r="14" stroke="var(--gold)" stroke-width="3"/>
+            <circle cx="58" cy="50" r="14" stroke="var(--emerald-light)" stroke-width="3"/>
+          </svg>
+        </div>
         <h3>Strong Bonds</h3>
         <p>We treat every guest like family, fostering warmth and genuine connection in every visit.</p>
       </div>
       <div class="value-card reveal">
-        <div class="icon">💫</div>
+        <div class="icon">
+          <svg viewBox="0 0 100 100" width="56" height="56" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="38" stroke="#e6ddc9" stroke-width="2"/>
+            <path d="M50 28v44M28 50h44M36 36l28 28M64 36L36 64" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
         <h3>Passion Into Reality</h3>
         <p>Yi Oasis exists because dreams were chased, not deferred — and that passion shows in every treatment.</p>
       </div>
@@ -421,6 +454,7 @@
 </section>
 
 <section class="experience" id="experience">
+  <canvas id="experienceCanvas" aria-hidden="true"></canvas>
   <div class="container center">
     <span class="eyebrow">Living a Dream, Creating a Legacy</span>
     <h2 class="section-title">Yi Oasis</h2>
@@ -480,7 +514,15 @@
   <div class="container">
     <div class="service-grid">
       <div class="service-card reveal">
-        <div class="service-media" style="background:linear-gradient(135deg,#1f4b3a,#2e6b53);">🦶 Foot Reflexology</div>
+        <div class="service-media" style="background:linear-gradient(135deg,#332f2b,#55524a);">
+          <svg viewBox="0 0 100 100" width="68" height="68" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="40" stroke="rgba(244,237,226,0.35)" stroke-width="2"/>
+            <path d="M46 74c-9 0-15-7-15-16 0-7 3-11 3-19 0-9-5-13-5-22 0-8 6-13 13-13 7 0 11 5 12 12 1 8-3 13-2 21 1 8 7 11 8 19 1 9-6 18-14 18z" stroke="#f4ede2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="42" cy="26" r="1.6" fill="#f4ede2"/>
+            <circle cx="49" cy="22" r="1.6" fill="#f4ede2"/>
+            <circle cx="56" cy="25" r="1.6" fill="#f4ede2"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Foot Reflexology</h3>
           <p>Restore energy and circulation with pressure-point reflexology, from a quick refresh to a full 2-hour indulgence.</p>
@@ -488,7 +530,13 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media" style="background:linear-gradient(135deg,#123529,#1f4b3a);">💆 Body Massage</div>
+        <div class="service-media" style="background:linear-gradient(135deg,#221f1c,#332f2b);">
+          <svg viewBox="0 0 100 100" width="68" height="68" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="40" stroke="rgba(244,237,226,0.35)" stroke-width="2"/>
+            <path d="M28 42c6-8 12-8 18 0s12 8 18 0" stroke="#f4ede2" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28 58c6-8 12-8 18 0s12 8 18 0" stroke="#f4ede2" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Body Massage</h3>
           <p>Our signature full-body treatment to melt away tension, business-class style, from 30 to 120 minutes.</p>
@@ -496,7 +544,14 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media" style="background:linear-gradient(135deg,#8a6a1f,#cfa646);">🪑 Neck, Shoulder & Back</div>
+        <div class="service-media" style="background:linear-gradient(135deg,#7a352c,#a8453a);">
+          <svg viewBox="0 0 100 100" width="68" height="68" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="40" stroke="rgba(244,237,226,0.35)" stroke-width="2"/>
+            <circle cx="50" cy="30" r="7" stroke="#f4ede2" stroke-width="3"/>
+            <path d="M50 37v10c0 6-10 8-10 18v10" stroke="#f4ede2" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 47c6 2 10 6 10 12" stroke="#f4ede2" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Neck, Shoulder & Back (Chair)</h3>
           <p>A targeted chair massage to release tension exactly where you need it most — perfect for a quick reset.</p>
@@ -504,7 +559,12 @@
         </div>
       </div>
       <div class="service-card reveal">
-        <div class="service-media" style="background:linear-gradient(135deg,#c9762c,#f2b06d);">✨ Combo Packages</div>
+        <div class="service-media" style="background:linear-gradient(135deg,#c9762c,#f2b06d);">
+          <svg viewBox="0 0 100 100" width="68" height="68" fill="none" aria-hidden="true">
+            <circle cx="42" cy="50" r="24" stroke="#f4ede2" stroke-width="3"/>
+            <circle cx="60" cy="50" r="24" stroke="rgba(244,237,226,0.55)" stroke-width="3"/>
+          </svg>
+        </div>
         <div class="service-body">
           <h3>Combo (On Chair)</h3>
           <p>Foot reflexology paired with neck, shoulder & back for the complete Yi Oasis indulgence, at a bundled rate.</p>
@@ -524,7 +584,7 @@
   <div class="container">
     <div class="promo-grid">
       <div class="poster reveal">
-        <div class="poster-top" style="background:linear-gradient(135deg,#123529,#1f4b3a);">
+        <div class="poster-top" style="background:linear-gradient(135deg,#221f1c,#332f2b);">
           <div class="ribbon" style="color:#ff5b52;">HAPPY HOUR</div>
           <div class="sub">Tuesday – Thursday · 10am–3pm & 7pm–8pm<br>(one slot per customer per day)</div>
         </div>
@@ -624,8 +684,8 @@
   </div>
   <div class="container">
     <span class="eyebrow">Loved By Our Guests</span>
-    <h2 class="section-title">Rate Your Experience</h2>
-    <p class="section-sub center">Join our guests who've rated Yi Oasis 5 stars on Google.</p>
+    <h2 class="section-title">Yi Oasis (Holland Village) on Google</h2>
+    <p class="section-sub center">Join our guests who've rated Yi Oasis (Holland Village) 5 stars on Google.</p>
     <div class="stars-widget reveal">
       <div class="stars-score">5.0 <span>/ 5 on Google</span></div>
       <div class="stars" id="starRow">
@@ -635,8 +695,8 @@
         <button data-v="4">★</button>
         <button data-v="5">★</button>
       </div>
-      <div class="stars-sub">Rated by guests via <b>yioasis@gmail.com</b> on Google</div>
-      <a class="btn btn-gold" id="reviewCta" href="https://www.google.com/search?q=Yi+Oasis+reviews" target="_blank" rel="noopener">⭐ Leave Us a Google Review</a>
+      <div class="stars-sub">Rated by guests of <b>Yi Oasis (Holland Village)</b> on Google</div>
+      <a class="btn btn-gold" id="reviewCta" href="https://www.google.com/search?q=Yi+Oasis+Holland+Village+reviews" target="_blank" rel="noopener">⭐ Leave Us a Google Review</a>
     </div>
     <p class="review-note">Click a star to rate us — we'll take you straight to Google to share your experience. Loved your visit? A 5‑star review means the world to our small team.</p>
   </div>
@@ -677,7 +737,13 @@
 </section>
 
 <footer>
-  <div class="brand">Yi <span style="color:var(--gold-light)">Oasis</span></div>
+  <div class="brand">
+    <svg class="logo-mark" viewBox="0 0 100 100" width="30" height="30" aria-hidden="true" style="margin-right:8px; vertical-align:-8px;">
+      <circle cx="50" cy="50" r="38" fill="none" stroke="#8a887e" stroke-width="9" stroke-linecap="round" stroke-dasharray="228 12" transform="rotate(-18 50 50)"/>
+      <path d="M28 56 Q50 45 72 50" fill="none" stroke="var(--gold-light)" stroke-width="7" stroke-linecap="round"/>
+    </svg>
+    Yi <span style="color:var(--gold-light)">Oasis</span>
+  </div>
   <div class="foot-links">
     <a href="#about">Our Story</a>
     <a href="#services">Services</a>
@@ -726,23 +792,134 @@
     header.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
-  // 5-star Google review marquee — trust badges, scrolling right to left, seamless loop
-  const marqueeItems = [
-    '★★★★★ &nbsp;5.0 Rated on Google',
-    '💬 &nbsp;Rated by Guests on Google',
-    '★★★★★ &nbsp;Business‑Class Indulgence',
-    '🌿 &nbsp;Zen, Clean & Modern',
-    '★★★★★ &nbsp;Loved by Our Guests',
-    '📍 &nbsp;Holland Village Favourite',
-    '★★★★★ &nbsp;Your Indulgence, "YI"',
-    '✨ &nbsp;Just Live Your Dreams'
+  // Real 5-star Google reviews for Yi Oasis (Holland Village) — scrolls right to left, seamless loop
+  const reviews = [
+    { name: 'Selina', meta: '14 reviews', quote: 'Did an hour of reflexology and an hour of full body by Ah Li. She was able to adjust to my needs and very attentive, technique was very good! Recommend! Ambience very relaxing with good recliner chairs and served tea with snacks 🙏' },
+    { name: 'Chin Tuan Chuang (Chin)', meta: 'Local Guide · 22 reviews', quote: 'Literally the most comfortable massage experience in Holland Village, 90 mins massage for $67 in a biz class seat 😂 Look for Sofia, she’s one of the consistent faces there and does one of the best back massages.' },
+    { name: 'Raihan Amirulhakim', meta: '9 reviews', quote: 'Li was very gentle with my injured leg. Strong and full of energy massage! Would return.' },
+    { name: 'Christine Tan', meta: 'Local Guide · 18 reviews', quote: 'Very good experience with Sophia. She gives good foot massage with the right use of strength. The beauty of this place is hygiene, everything is disposable! Comfortable chair to rest and enjoy.' },
+    { name: 'happinessglowswithin', meta: 'Google review', quote: 'Sophia was great, loved the massage!' },
+    { name: 'Rebecca Teo', meta: 'Local Guide · 22 reviews', quote: 'Clean and comfortable. Spacious chair. Sophia was very skillful! Will be back especially during promo hours :)' }
   ];
   const track = document.getElementById('marqueeTrack');
   if (track) {
-    const renderSet = () => marqueeItems.map(t => `<div class="marquee-item">${t}</div>`).join('');
+    const renderSet = () => reviews.map(r => `
+      <div class="marquee-item">
+        <div class="mstars">★★★★★</div>
+        <div class="mquote">"${r.quote}"</div>
+        <div class="mname">${r.name}</div>
+        <div class="mmeta">${r.meta} · Google</div>
+      </div>
+    `).join('');
     // duplicate the set twice so the 0%→-50% translateX loop is seamless
     track.innerHTML = renderSet() + renderSet();
   }
+
+  // ===== Ambient canvas animations (hero light orbs + experience zen ripples) =====
+  (function(){
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setupCanvas(canvas, sectionEl){
+      const ctx = canvas.getContext('2d');
+      let w, h, dpr;
+      function resize(){
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = sectionEl.clientWidth; h = sectionEl.clientHeight;
+        canvas.width = Math.max(1, w * dpr); canvas.height = Math.max(1, h * dpr);
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+      return { ctx, resize, get w(){ return w; }, get h(){ return h; } };
+    }
+
+    function animate(sectionEl, canvas, drawFrame){
+      if (!canvas || !sectionEl) return;
+      const stage = setupCanvas(canvas, sectionEl);
+      let running = !reduceMotion;
+      let rafId = null;
+      function loop(t){
+        drawFrame(stage, t);
+        if (running) rafId = requestAnimationFrame(loop);
+      }
+      if (running) rafId = requestAnimationFrame(loop);
+      else drawFrame(stage, 0);
+
+      window.addEventListener('resize', () => stage.resize(), { passive:true });
+
+      if ('IntersectionObserver' in window && !reduceMotion) {
+        new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !running) { running = true; rafId = requestAnimationFrame(loop); }
+            else if (!entry.isIntersecting && running) { running = false; if (rafId) cancelAnimationFrame(rafId); }
+          });
+        }, { threshold: 0.05 }).observe(sectionEl);
+      }
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && running) { running = false; if (rafId) cancelAnimationFrame(rafId); }
+        else if (!document.hidden && !reduceMotion && !running) { running = true; rafId = requestAnimationFrame(loop); }
+      });
+    }
+
+    // Hero: softly rising zen light orbs
+    const heroSection = document.getElementById('top');
+    const heroCanvas = document.getElementById('heroCanvas');
+    if (heroCanvas && heroSection) {
+      const colors = ['rgba(201,123,106,0.55)', 'rgba(255,255,255,0.32)', 'rgba(168,69,58,0.42)'];
+      let orbs = [];
+      function makeOrbs(w, h){
+        const count = w < 700 ? 14 : 26;
+        orbs = Array.from({ length: count }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 1.4 + Math.random() * 3.2,
+          speed: 0.12 + Math.random() * 0.3,
+          drift: (Math.random() - 0.5) * 0.3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          phase: Math.random() * Math.PI * 2
+        }));
+      }
+      makeOrbs(heroSection.clientWidth, heroSection.clientHeight);
+      const origAnimate = animate;
+      animate(heroSection, heroCanvas, (stage, t) => {
+        if (!orbs.length || Math.abs(orbs._w - stage.w) > 40) { makeOrbs(stage.w, stage.h); orbs._w = stage.w; }
+        stage.ctx.clearRect(0, 0, stage.w, stage.h);
+        orbs.forEach(o => {
+          o.y -= o.speed;
+          o.x += Math.sin((t / 1800) + o.phase) * 0.15 + o.drift * 0.05;
+          if (o.y < -10) { o.y = stage.h + 10; o.x = Math.random() * stage.w; }
+          if (o.x < -10) o.x = stage.w + 10;
+          if (o.x > stage.w + 10) o.x = -10;
+          stage.ctx.beginPath();
+          stage.ctx.fillStyle = o.color;
+          stage.ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
+          stage.ctx.fill();
+        });
+      });
+    }
+
+    // Experience section: slow expanding zen ripple rings
+    const expSection = document.getElementById('experience');
+    const expCanvas = document.getElementById('experienceCanvas');
+    if (expCanvas && expSection) {
+      animate(expSection, expCanvas, (stage, t) => {
+        stage.ctx.clearRect(0, 0, stage.w, stage.h);
+        const cx = stage.w * 0.82, cy = stage.h * 0.24;
+        const maxR = Math.max(stage.w, stage.h) * 0.65;
+        const ringGap = 70;
+        const offset = (t * 0.012) % ringGap;
+        for (let r = offset; r < maxR; r += ringGap) {
+          const alpha = 0.11 * (1 - r / maxR);
+          if (alpha <= 0) continue;
+          stage.ctx.beginPath();
+          stage.ctx.strokeStyle = `rgba(201,123,106,${alpha.toFixed(3)})`;
+          stage.ctx.lineWidth = 1;
+          stage.ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          stage.ctx.stroke();
+        }
+      });
+    }
+  })();
 
   // Scroll-reveal animation
   const revealEls = document.querySelectorAll('.reveal');
