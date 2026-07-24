@@ -77,8 +77,8 @@
   .hero{
     position:relative; min-height:100vh; display:flex; align-items:center;
     background:
-      linear-gradient(160deg, rgba(43,38,33,.90), rgba(85,82,74,.80) 55%, rgba(168,69,58,.35)),
-      radial-gradient(circle at 80% 20%, rgba(168,69,58,.25), transparent 45%);
+      linear-gradient(160deg, rgba(20,28,22,.72), rgba(15,38,30,.78) 55%, rgba(43,38,33,.55)),
+      url('shop%20front1.jpeg') center/cover no-repeat;
     background-color:var(--emerald-deep);
     color:#fff; text-align:center; padding-top:120px;
     overflow:hidden;
@@ -86,12 +86,20 @@
   .hero:before{
     content:""; position:absolute; inset:0;
     background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-    background-size:22px 22px; opacity:.4;
+    background-size:22px 22px; opacity:.25;
   }
   .hero canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; }
   .hero-inner{ position:relative; z-index:2; max-width:800px; margin:0 auto; padding:0 24px; }
+  .hero-logo-badge{
+    background:rgba(255,255,255,.97);
+    width:168px; height:168px; border-radius:20px;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 30px; padding:16px;
+    box-shadow:0 22px 48px rgba(0,0,0,.35);
+  }
+  .hero-logo-badge img{ max-width:100%; max-height:100%; object-fit:contain; display:block; }
   .hero .eyebrow{ color:var(--gold-light); }
-  .hero h1{ font-size:clamp(2.4rem, 6vw, 4.2rem); line-height:1.12; font-weight:800; margin-bottom:22px; }
+  .hero h1{ font-size:clamp(2.4rem, 6vw, 4.2rem); line-height:1.12; font-weight:800; margin-bottom:22px; text-shadow:0 4px 22px rgba(0,0,0,.35); }
   .hero h1 em{ font-style:normal; color:var(--gold-light); }
   .hero p{ font-size:1.12rem; line-height:1.8; color:#eef3ee; opacity:.92; margin:0 auto 38px; max-width:600px; }
   .hero-actions{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
@@ -99,6 +107,7 @@
   .hero-stats div{ text-align:center; }
   .hero-stats strong{ display:block; font-family:'Playfair Display',serif; font-size:1.9rem; color:var(--gold-light); }
   .hero-stats span{ font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:#dfe8e2; }
+  @media(max-width:600px){ .hero-logo-badge{ width:120px; height:120px; border-radius:16px; margin-bottom:22px; } }
   /* STORY */
   .story{ background:var(--white); }
   .story-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; }
@@ -389,6 +398,9 @@
 <section class="hero" id="top">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
+    <div class="hero-logo-badge">
+      <img src="yi-oasis-logo.png" alt="Yi Oasis logo">
+    </div>
     <span class="eyebrow">Yi Oasis · Your Indulgence</span>
     <h1>A <em>Business‑Class</em> Escape<br>Into Pure Bliss</h1>
     <p>Step into Yi Oasis and indulge your senses in a world crafted for ultimate relaxation — where every visit feels like the epitome of luxury.</p>
